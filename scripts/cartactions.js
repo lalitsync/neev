@@ -6,7 +6,82 @@ Version : 1.1
 */
 
 
+function reloadHistory()
+{
+//									readCookie('selectedProducts');
+
+var nameEQ =  "selectedProducts=";
+var ca = document.cookie.split(';');
+
+var SelectedProducts='';
+for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) { SelectedProducts = c.substring(nameEQ.length,c.length); }
+}
+var ca = SelectedProducts.split('|##|');
+
+// alert("cookie data"+ca);
+var itemsSelectedCookie=[];
+for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+		var productVal = c.split(':::');
+		
+					var ProductId=productVal[0];
+								var ProductClass=productVal[1];
+								
+								//alert(ProductId);
+								
+									if(productVal.length>=2){ 
+									jQuery.each(jQuery('.allProducts li#'+ProductId), function(key, val) {
+				if(key%2==1) {   sizeInfo ='odd'; } else { sizeInfo ='even'; }
+					itemsSelectedCookie.push('<li id="' + jQuery(this).attr('id')+ '"  class="'+jQuery(this).attr('class')+'">'+jQuery(this).html()+'</li>');
+					jQuery(this).hide();
+				});
+				
+				jQuery('.selected .productList').html('');
+				
+				jQuery('<ul/>', {
+					'class': 'selected-fruits',
+					html: itemsSelectedCookie.join('')
+					}).appendTo('.selected .productList');
+				
+				jQuery('.selected li').removeClass('active');
+				jQuery('.selected li#'+ProductId).addClass(ProductClass);
+				
+									}
+								
+								
+								
+								
+								
+
+}
+}
+
+
+
+function SetHistory()
+{
+	
+	    	var cookie = "";
+	
+			jQuery.each(jQuery('.selected li'), function(key, val) {
+					cookie = cookie +'|##|'+jQuery(this).attr('id')+':::'+jQuery(this).attr('class');
+				});
+			var date = new Date();
+			date.setTime(date.getTime()+(365*24*60*60*1000));
+			var expires = "; expires="+date.toGMTString();
+			document.cookie = 'selectedProducts='+cookie+'; expires='+date.toGMTString()+';path=/'
+
+}
+
+
+
 jQuery(document).ready(function() {
+								
+								
+								
 								
 		var  sizeInfo ='even';
 		var items = [];
@@ -24,6 +99,9 @@ jQuery(document).ready(function() {
 		    'class': 'my-new-list',
 		    html: items.join('')
 		  }).appendTo('.allProducts .productList');
+		 
+		 
+		 reloadHistory();
 		 
 		 
 /* Selecting The Item from List*/		 
@@ -59,6 +137,7 @@ jQuery(document).ready(function() {
 					}).appendTo('.selected .productList');
 				
 				jQuery('.selected li').removeClass('active');
+				SetHistory();
 			});
 
 
