@@ -66,6 +66,7 @@ function SetHistory()
 	
 	    	var cookie = "";
 	
+	alert(jQuery('.selected li').length);
 			jQuery.each(jQuery('.selected li'), function(key, val) {
 					cookie = cookie +'|##|'+jQuery(this).attr('id')+':::'+jQuery(this).attr('class');
 				});
@@ -143,17 +144,17 @@ jQuery(document).ready(function() {
 
 /*Removing Fruits from Order  basket*/
 jQuery('button.remove').live('click',function() {
-											  var CountSelected = jQuery('.selected li.active').length;
+						var CountSelected = jQuery('.selected li.active').length;
 						if(CountSelected <=0) { 
 									jQuery('div.message').html('<p class="error round-border"> Please Select Product To Remove!</p>');  
 									jQuery('p.error').fadeOut(5000);  
 									return false;
 								}
-						
-											  
 									jQuery.each(jQuery('.selected li.active'), function(key, val) { 
 										   jQuery(this).remove();
 										   jQuery('.allProducts li#'+jQuery(this).attr('id')).show().removeClass('active');
 								   });
-							   });
+						SetHistory();
 		});
+
+	});

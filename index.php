@@ -8,7 +8,7 @@ include 'functions.php';
 <link href="css/style.css" media="screen" rel="stylesheet" type="text/css">
 </head>
 <body class="app-wrapper">
-<div class="content">
+<div class="content round-border">
   <div class="notification"></div>
   <div class="message"></div>
   <div class="Form-holder">
