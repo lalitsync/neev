@@ -1,0 +1,119 @@
+/*
+Css-Template Created for a Test App.
+Author: Lalit Kumawat
+Version : 1.1
+*/
+
+html, body, div {
+	margin:auto;
+	display:block;
+	font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+	font-size: 11px;
+}
+body.app-wrapper {
+	background:#EDEFF4;
+}
+div.content {
+	width:900px;
+	margin:auto;
+	text-align:justify;
+	border-color: rgba(0, 0, 0, 0.398438);
+	border-style: solid;
+	border-width: 1px;
+	box-shadow: #B2B9C9 2px 0px 2px -2;
+	padding-top: 30px;
+	margin-top:10px;
+}
+div.Form-holder fieldset {
+border:0px;
+}
+.placeholder {
+	width:410px;
+}
+div.Form-holder fieldset li {
+	display:block;
+	width:400px;
+}
+label.label {
+	font-size: 35px;
+	color:#003b97;
+}
+label.caption {
+	font-size:20px;
+}
+select#handle, button.go {
+	background:#EEE;
+	border:1px solid #e7e7e7;
+	border-color: rgba(0, 0, 0, 0.398438);
+	height:30px;
+}
+
+/* managing Borders */
+.round-border { 	-webkit-border-radius:4px;}
+/* Box for cart*/
+.clear {
+	clear:both;
+	display:block;
+}
+.box {
+	float:left;
+	margin: 10px;
+}
+.box li {
+	display: block;
+}
+.box.large {
+	width:300px;
+}
+.box.small {
+	width:150px;
+}
+.actions button {
+	background:#81b4ed;
+	color:#000;
+	border:0px;
+	width: 75px;
+	padding: 5px;
+	font-weight:bold;
+}
+.allProducts select {
+	display:none;
+}
+.box.large li {
+	border:1px solid #ecdada;
+	padding: 0 5px;
+}
+.box li.odd {
+	background:#ecdada;
+}
+.box li.even {
+	background:#f5f5f5;
+}
+
+
+.box li.active {
+	background:#CC0033;
+}
+
+.box.large li div 
+{
+padding:5px;
+}
+.box.large li div.name {
+float:left;
+width:70%;
+}
+.box.large li div.price {
+margin-left:75%;
+	border-left:1px solid #ecdada
+
+}
+
+p.error
+{
+background:#FF9999;
+color:#FF0000;
+border:#FF0000 1px solid;
+padding:5px;
+margin:0 10px;
+}
