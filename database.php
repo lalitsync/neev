@@ -68,7 +68,7 @@ $mynewSQL ="INSERT INTO `products` (`p_id`, `product_name`, `product_price`, `pr
 (16, 'strawberries', 80, 'img/strawberries.jpg', 'price per kg'),
 (17, 'watermelon', 50, 'img/watermelon.jpg', 'price of one watermelon'),
 (18, 'coriander', 20, 'img/coriander.jpg', 'price per bunch of coriander'),
-(19, 'springonion', 20, 'springonion.jpg', 'price per bunch of coriander');
+(19, 'springonion', 20, 'img/springonion.jpg', 'price per bunch of coriander');
 ";
 
 $rs= mysql_query($mynewSQL) or die(mysql_error());
