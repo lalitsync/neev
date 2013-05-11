@@ -26,7 +26,7 @@ while($row =mysql_fetch_assoc($res))
 
 $className ='odd';
 if($row['id']%2==0) { $className ='even' ;}
-$FruitsCollection .='<li id="fruit_'.$row['id'].'" class="'.$className.' shadow" label="1"> <div class="Img"><img src="'.$row['imgurl'].'"></div><div class="name"> '.$row['name'].' </div> <div class="price"> RS  <span class="amount">'.$row['price'].'</span> </div></li>';
+$FruitsCollection .='<li id="fruit_'.$row['id'].'" class="'.$className.' shadow" label="'.$row['id'].'"> <div class="Img"><img src="'.$row['imgurl'].'"></div><div class="name"> '.$row['name'].' </div> <div class="price"> RS  <span class="amount">'.$row['price'].'</span> </div></li>';
 }
 
 $FruitsCollection .='</ul>';
