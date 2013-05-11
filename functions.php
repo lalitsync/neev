@@ -15,18 +15,23 @@ return $options;
 function getAllFruits()
 {
 
-$sql_fruits ='select p_id as id, product_name as name  , product_price as price from products';
+$sql_fruits ='select p_id as id, product_name as name  , product_price as price , product_image as imgurl from products';
 
 $res= mysql_query($sql_fruits);
 
-$returnArray =array();
+$FruitsCollection ='<ul class="my-new-list">';
 while($row =mysql_fetch_assoc($res))
 {
+//array_push($returnArray,$row);
 
-array_push($returnArray,$row);
+$className ='odd';
+if($row['id']%2==0) { $className ='even' ;}
+$FruitsCollection .='<li id="fruit_'.$row['id'].'" class="'.$className.' shadow" label="1"> <div class="Img"><img src="'.$row['imgurl'].'"></div><div class="name"> '.$row['name'].' </div> <div class="price">'.$row['price'].' </div></li>';
 }
 
-return $returnArray;
+$FruitsCollection .='</ul>';
+
+return $FruitsCollection;
 }
 
 function getAllDates()

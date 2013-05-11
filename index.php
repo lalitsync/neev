@@ -42,10 +42,8 @@ include 'functions.php';
 <div class="allProducts box large">
 <div class="heading"> Available fruits</div>
 <div class='productList'>
-<select>
- <?php   echo makeOptions(getAllFruits());  ?>
-        </select>
-        </div>
+ <?php   echo getAllFruits();  ?>
+ </div>
 </div>
 <div class="actions box small"> 
       <ul>

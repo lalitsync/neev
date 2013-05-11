@@ -73,6 +73,11 @@ label.caption {
 .hiden {
 	opacity:0;
 }
+
+.shadow 
+{
+box-shadow: 5px 5px 20px #920f0f;
+}
 /* Box for cart*/
 .clear {
 	clear:both;
@@ -117,7 +122,9 @@ label.caption {
 }
 .box.large li {
 	border:1px solid #fe7878;
-	padding: 0 5px;
+	padding: 0px;
+	width:120px; float:left; margin:5px 20px;
+	min-height:150px;
 }
 .box li.odd {
 	background:#ecdada;
@@ -131,9 +138,22 @@ label.caption {
 .box.large li div {
 	padding:5px;
 }
+.box.large li div.img {
+border-bottom: 1px solid #fe7878;
+padding: 15px 5px;
+margin: auto;
+text-align: center;
+	height:100px; }
+
+.box.large li div.img img
+{
+heighty:100px;
+}
+
 .box.large li div.name {
 	float:left;
 	width:70%;
+	text-align: center;
 }
 .box.large li div.price {
 	margin-left:75%;
@@ -145,6 +165,7 @@ color: #FF0000;
 border: ##DF8F8F 1px solid;
 padding: 10px 10px 10px 40px;
 	margin:0 10px;
+	box-shadow: 5px 5px 20px #920f0f;
 }
 
 p.success {
@@ -153,6 +174,7 @@ p.success {
 	border:##ACDBAD 1px solid;
 padding: 10px 10px 10px 40px;
 	margin:0 10px;
+	box-shadow: 5px 5px 20px #ACDBAD;
 }
 
 

@@ -84,6 +84,24 @@ $mynewSQL ="CREATE TABLE IF NOT EXISTS `order` (
 ) ;";
 $rs= mysql_query($mynewSQL) or die(mysql_error());
 
+$mynewSQL ="INSERT INTO `order` (`order_id`, `customer_id`, `status`, `date`, `order_amount`) VALUES
+(1, 1, 1, '2013-05-11', 360),
+(2, 1, 1, '2013-04-11', 280),
+(3, 6, 1, '2013-05-09', 80),
+(4, 9, 1, '2013-05-11', 40),
+(5, 1, 1, '2013-04-11', 40),
+(6, 1, 1, '2013-05-11', 40),
+(7, 1, 1, '2013-05-09', 40),
+(8, 1, 1, '2013-05-09', 40),
+(9, 1, 1, '2013-05-09', 80),
+(10, 1, 1, '2013-05-11', 80),
+(11, 1, 1, '2013-05-11', 80),
+(12, 1, 1, '2013-05-12', 80);
+";
+$rs= mysql_query($mynewSQL) or die(mysql_error());
+
+
+
 
 $mynewSQL ="CREATE TABLE IF NOT EXISTS `order_items` (
   `entity_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -93,6 +111,38 @@ $mynewSQL ="CREATE TABLE IF NOT EXISTS `order_items` (
 )  ;
 ";
 
+
+
+$rs= mysql_query($mynewSQL) or die(mysql_error());
+
+
+
+$mynewSQL ="INSERT INTO `order_items` (`entity_id`, `order_id`, `item_id`) VALUES
+(1, 1, 3),
+(2, 1, 1),
+(3, 1, 4),
+(4, 1, 6),
+(5, 1, 5),
+(6, 2, 3),
+(7, 2, 1),
+(8, 2, 4),
+(9, 2, 5),
+(10, 3, 3),
+(11, 3, 4),
+(12, 4, 4),
+(13, 6, 4),
+(14, 5, 4),
+(15, 7, 4),
+(16, 8, 4),
+(17, 9, 4),
+(18, 9, 3),
+(19, 10, 4),
+(20, 10, 3),
+(21, 11, 4),
+(22, 11, 3),
+(23, 12, 4),
+(24, 12, 3);
+";
 $rs= mysql_query($mynewSQL) or die(mysql_error());
 
 header('location:index.php');
