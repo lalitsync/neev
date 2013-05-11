@@ -81,13 +81,11 @@ $mynewSQL ="CREATE TABLE IF NOT EXISTS `order` (
   `date` date NOT NULL,
   `order_amount` int(11) NOT NULL,
   PRIMARY KEY (`order_id`)
-) AUTO_INCREMENT=1000 ;";
+) ;";
 $rs= mysql_query($mynewSQL) or die(mysql_error());
 
 
-$mynewSQL ="
-DROP TABLE IF EXISTS `order_items`;
-CREATE TABLE IF NOT EXISTS `order_items` (
+$mynewSQL ="CREATE TABLE IF NOT EXISTS `order_items` (
   `entity_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
