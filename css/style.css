@@ -152,11 +152,11 @@ heighty:100px;
 
 .box.large li div.name {
 	float:left;
-	width:70%;
+	width:55%;
 	text-align: center;
 }
 .box.large li div.price {
-	margin-left:75%;
+	margin-left:57%;
 	border-left:1px solid #fe7878;
 }
 p.error {
@@ -268,12 +268,12 @@ div.Form-holder.admin fieldset {
 }
 .orderDetails .Order_items li .name {
 	float:left;
-	width:325px;
+	width:280px;
 	padding: 8px;
 	font-size: 17px;
 }
 .orderDetails .Order_items li .price {
-	margin-left:335px;
+	margin-left:290px;
 	border-left: 1px solid #b84445;
 	padding: 8px;
 	font-size: 17px;

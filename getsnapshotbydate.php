@@ -13,7 +13,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 	$result =mysql_query($sqlOrder) or die(mysql_error());
 		while ($row = mysql_fetch_assoc($result))	{
 			// array_push($orderArray,$row);
-			$resultHtml ='<div class="snap_shot_detail"> <ul> <li> Total Order For RS '.$row['datestring'].' is <strong> '.$row['total'].'</strong> </li>	<li> Largest Order Placed  By <strong> '.$row['customer'].'</strong> for <strong> RS  '.$row['largest'].' </strong></li></ul></div>';			
+			$resultHtml ='<div class="snap_shot_detail"> <ul> <li> Total Order For  '.$row['datestring'].' is <strong>  RS '.$row['total'].'</strong> </li>	<li> Largest Order Placed  By <strong> '.$row['customer'].'</strong> for <strong> RS  '.$row['largest'].' </strong></li></ul></div>';			
 			
 		}
 		

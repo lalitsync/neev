@@ -26,7 +26,7 @@ while($row =mysql_fetch_assoc($res))
 
 $className ='odd';
 if($row['id']%2==0) { $className ='even' ;}
-$FruitsCollection .='<li id="fruit_'.$row['id'].'" class="'.$className.' shadow" label="1"> <div class="Img"><img src="'.$row['imgurl'].'"></div><div class="name"> '.$row['name'].' </div> <div class="price">'.$row['price'].' </div></li>';
+$FruitsCollection .='<li id="fruit_'.$row['id'].'" class="'.$className.' shadow" label="1"> <div class="Img"><img src="'.$row['imgurl'].'"></div><div class="name"> '.$row['name'].' </div> <div class="price"> RS  <span class="amount">'.$row['price'].'</span> </div></li>';
 }
 
 $FruitsCollection .='</ul>';
@@ -86,13 +86,13 @@ if($keyId ==0  || $orderRow['order_id'] !=$lastOrderId)
 	{ 
 	$html .='</ul></div></li><li class="Order-Row"> <div class="heading"><div class="open status"></div><div class="orderId"> Order #'.$orderRow['order_id'].' - '.$orderRow['username'].'</div> </div> <div class="Order_items"><ul>'; $ulopen='yes';
 } 
-				$html.=' <li id="fruit_'.$orderRow['order_id'].'" class="odd"><div class="name"> '.$orderRow['product_name'].' </div> <div class="price"> '.$orderRow['product_price'].' </div></li>';
+				$html.=' <li id="fruit_'.$orderRow['order_id'].'" class="odd"><div class="name"> '.$orderRow['product_name'].' </div> <div class="price"> RS '.$orderRow['product_price'].' </div></li>';
 					$subTotal = 	$subTotal + $orderRow['product_price'];
 	
 	 $nextkeyId =$keyId+1;
 
 	 if($keyId == $rowsCount || $orderRow['order_id'] != $orderObject[$nextkeyId]['order_id'] ) {  
-	 $html.=' <li id="subtotal" class="odd"><div class="name">  Sub Total </div> <div class="price"> '.$subTotal.' </div></li>';  $subTotal =0;
+	 $html.=' <li id="subtotal" class="odd"><div class="name">  Sub Total </div> <div class="price">  RS '.$subTotal.' </div></li>';  $subTotal =0;
 	}
 
 	

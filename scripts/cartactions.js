@@ -89,25 +89,6 @@ function SetHistory()
 }
 
 jQuery(document).ready(function() {
-								
-		var  sizeInfo ='even';
-		var items = [];
-		jQuery.each(jQuery('.allProducts select option'), function(key, val) {
-			if(key%2==1) {
-				sizeInfo ='odd';
-			}
-			else    { 
-				sizeInfo ='even';
-			}
-		
-		items.push('<li id="fruit_' + key + '"  class="'+sizeInfo+'" label = "'+jQuery(this).val()+'"><div class="name" >'+jQuery(this).text()+' </div> <div class="price" >'+jQuery(this).attr('label')+' </div></li>');
-		  });
-		 jQuery('<ul/>', {
-		    'class': 'my-new-list',
-		    html: items.join('')
-		  }).appendTo('.allProducts .productList');
-		 
-		 
 		 reloadHistory();
 		 
 		 
@@ -134,7 +115,7 @@ jQuery(document).ready(function() {
 			jQuery.each(jQuery('.allProducts li.active'), function(key, val) {
 				if(key%2==1) {   sizeInfo ='odd'; } else { sizeInfo ='even'; }
 					itemsSelected.push('<li id="' + jQuery(this).attr('id')+ '"  class="'+jQuery(this).attr('class')+'"  label="'+jQuery(this).attr('label')+'">'+jQuery(this).html()+'</li>');
-										jQuery(this).removeClass('active');
+					jQuery(this).removeClass('active');
 					jQuery(this).hide();
 				});
 				
@@ -175,9 +156,9 @@ jQuery('button.submit').live('click',function() {
 				jQuery.each(jQuery('.selected li'), function(key, val) {
 						var itemdetail =[];
 					itemdetail[0]= jQuery(this).attr('label') ;
-					itemdetail[1] =jQuery(this).find('.price').html();
+					itemdetail[1] =jQuery(this).find('.price .amount').text();
 					OrderTotal = OrderTotal+ parseInt(itemdetail[1]);
-					var  itemdetail2 = ""+jQuery(this).attr('label')+","+jQuery(this).find('.price').html()+",1 ";
+					var  itemdetail2 = ""+jQuery(this).attr('label')+","+jQuery(this).find('.price .amount').text()+",1 ";
 					Items.push(itemdetail2);
 					
 				});
