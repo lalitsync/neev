@@ -6,8 +6,10 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `username` varchar(211) NOT NULL,
   PRIMARY KEY (`customer_id`)
 ) ;
+";
 
-INSERT INTO `customer` (`customer_id`, `username`) VALUES
+$rs= mysql_query($mynewSQL) or die(mysql_error());
+$mynewSQL ="INSERT INTO `customer` (`customer_id`, `username`) VALUES
 (1, 'arvind'),
 (2, 'john'),
 (3, 'ram'),
@@ -22,16 +24,21 @@ INSERT INTO `customer` (`customer_id`, `username`) VALUES
 (12, 'rita'),
 (13, 'alice'),
 (14, 'gorge'),
-(15, 'rohan');
-CREATE TABLE IF NOT EXISTS `products` (
+(15, 'rohan');  ";
+
+$rs= mysql_query($mynewSQL) or die(mysql_error());
+$mynewSQL ="CREATE TABLE IF NOT EXISTS `products` (
   `p_id` int(11) NOT NULL AUTO_INCREMENT,
   `product_name` varchar(211) NOT NULL,
   `product_price` decimal(11,0) NOT NULL,
   `product_image` varchar(211) NOT NULL,
   `comments` varchar(211) NOT NULL,
   PRIMARY KEY (`p_id`)
-);
-INSERT INTO `products` (`p_id`, `product_name`, `product_price`, `product_image`, `comments`) VALUES
+);" ;
+
+
+$rs= mysql_query($mynewSQL) or die(mysql_error());
+$mynewSQL ="INSERT INTO `products` (`p_id`, `product_name`, `product_price`, `product_image`, `comments`) VALUES
 (1, 'apple', 140, 'img/apple.jpg', 'price is for one apple'),
 (2, 'banana', 30, 'img/banana.jpg', 'price for dozones of banana'),
 (3, 'brinjal', 40, 'img/brinjal.jpg', 'price per kg'),
@@ -53,5 +60,5 @@ INSERT INTO `products` (`p_id`, `product_name`, `product_price`, `product_image`
 (19, 'springonion', 20, 'springonion.jpg', 'price per bunch of coriander');
 ";
 
-$rs= mysql_query($mynewSQL);
+$rs= mysql_query($mynewSQL) or die(mysql_error());
 echo 'Done';
