@@ -130,7 +130,7 @@ jQuery(document).ready(function() {
 					jQuery(this).hide();
 				});
 				
-				jQuery('.selected .productList').html('');
+				// jQuery('.selected .productList').html('');
 				
 				jQuery('<ul/>', {
 					'class': 'selected-fruits',

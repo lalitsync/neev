@@ -1,6 +1,4 @@
 <?php
-//$conn = mysql_connect('localhost','root');
-$conn = mysql_connect('72.16.30.209','blanch','zDvbHEtG');
-
-$database =mysql_select_db('neev');
+$conn = mysql_connect($_SERVER["DB1_HOST"],$_SERVER["DB1_USER"], $_SERVER["DB1_PASS"]);
+$database =mysql_select_db($_SERVER["DB1_NAME"]);
 ?>
