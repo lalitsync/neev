@@ -35,7 +35,7 @@ for(var i=0;i < ca.length;i++) {
 									if(productVal.length>=2){ 
 									jQuery.each(jQuery('.allProducts li#'+ProductId), function(key, val) {
 				if(key%2==1) {   sizeInfo ='odd'; } else { sizeInfo ='even'; }
-					itemsSelectedCookie.push('<li id="' + jQuery(this).attr('id')+ '"  class="'+jQuery(this).attr('class')+'">'+jQuery(this).html()+'</li>');
+					itemsSelectedCookie.push('<li id="' + jQuery(this).attr('id')+ '"  class="'+jQuery(this).attr('class')+'"  label="'+jQuery(this).attr('label')+'">'+jQuery(this).html()+'</li>');
 					jQuery(this).hide();
 				});
 				
@@ -63,26 +63,17 @@ for(var i=0;i < ca.length;i++) {
 
 function SetHistory()
 {
-	
 	    	var cookie = "";
-	
-	alert(jQuery('.selected li').length);
 			jQuery.each(jQuery('.selected li'), function(key, val) {
-					cookie = cookie +'|##|'+jQuery(this).attr('id')+':::'+jQuery(this).attr('class');
+					cookie = cookie +'|##|'+jQuery(this).attr('id')+':::'+jQuery(this).attr('class')+':::'+jQuery(this).val();
 				});
 			var date = new Date();
 			date.setTime(date.getTime()+(365*24*60*60*1000));
 			var expires = "; expires="+date.toGMTString();
 			document.cookie = 'selectedProducts='+cookie+'; expires='+date.toGMTString()+';path=/'
-
 }
 
-
-
 jQuery(document).ready(function() {
-								
-								
-								
 								
 		var  sizeInfo ='even';
 		var items = [];
@@ -94,7 +85,7 @@ jQuery(document).ready(function() {
 				sizeInfo ='even';
 			}
 		
-		items.push('<li id="fruit_' + key + '"  class="'+sizeInfo+'"><div class="name" >'+jQuery(this).text()+' </div> <div class="price" >'+jQuery(this).attr('label')+' </div></li>');
+		items.push('<li id="fruit_' + key + '"  class="'+sizeInfo+'" label = "'+jQuery(this).val()+'"><div class="name" >'+jQuery(this).text()+' </div> <div class="price" >'+jQuery(this).attr('label')+' </div></li>');
 		  });
 		 jQuery('<ul/>', {
 		    'class': 'my-new-list',
@@ -126,7 +117,8 @@ jQuery(document).ready(function() {
 			var itemsSelected =[];
 			jQuery.each(jQuery('.allProducts li.active'), function(key, val) {
 				if(key%2==1) {   sizeInfo ='odd'; } else { sizeInfo ='even'; }
-					itemsSelected.push('<li id="' + jQuery(this).attr('id')+ '"  class="'+jQuery(this).attr('class')+'">'+jQuery(this).html()+'</li>');
+					itemsSelected.push('<li id="' + jQuery(this).attr('id')+ '"  class="'+jQuery(this).attr('class')+'"  label="'+jQuery(this).attr('label')+'">'+jQuery(this).html()+'</li>');
+										jQuery(this).removeClass('active');
 					jQuery(this).hide();
 				});
 				
@@ -157,4 +149,58 @@ jQuery('button.remove').live('click',function() {
 						SetHistory();
 		});
 
+
+jQuery('button.submit').live('click',function() { 
+											  
+				 var Items = [];
+				 var OrderTotal =0
+											  
+				jQuery.each(jQuery('.selected li'), function(key, val) {
+						var itemdetail =[];
+					itemdetail[0]= jQuery(this).attr('label') ;
+					itemdetail[1] =jQuery(this).find('.price').html();
+					OrderTotal = OrderTotal+ parseInt(itemdetail[1]);
+					var  itemdetail2 = ""+jQuery(this).attr('label')+","+jQuery(this).find('.price').html()+",1 ";
+					Items.push(itemdetail2);
+					
+				});
+				
+				// alert(Items.length);
+				jQuery.post("addorder.php", {'user_id': jQuery('select#handle').val(), 'ordertotal':OrderTotal,'itemsdata': Items.join(':')} ,function(data) {   alert("Data Loaded: " + data);   });
+				
+				
+			});
 	});
+
+
+// admin dunctionality	  
+
+function getOrdersByDate(date)
+{
+jQuery.post("getorderbydate.php", {'date': date} ,function(data) {   
+														   
+														   jQuery('div.order_list').html(data);
+														   
+														   });
+
+jQuery.post("getsnapshotbydate.php", {'date': date} ,function(data) {   
+														   
+														   jQuery('div.snap_shot_data').html(data);
+														   
+														   });
+
+ }
+
+
+jQuery(document).ready(function() {
+								
+								getOrdersByDate(jQuery('#datehandle').val());
+jQuery('#datehandle').live('change',function() {
+													getOrdersByDate(jQuery(this).val());
+													});
+											  
+								});
+
+
+			  
+											 

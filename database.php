@@ -1,5 +1,8 @@
 <?php
 include 'info.php';
+
+// creating customers  table
+
 $mynewSQL ="
 CREATE TABLE IF NOT EXISTS `customer` (
   `customer_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -9,6 +12,8 @@ CREATE TABLE IF NOT EXISTS `customer` (
 ";
 
 $rs= mysql_query($mynewSQL) or die(mysql_error());
+
+// adding customers
 $mynewSQL ="INSERT INTO `customer` (`customer_id`, `username`) VALUES
 (1, 'arvind'),
 (2, 'john'),
@@ -27,6 +32,9 @@ $mynewSQL ="INSERT INTO `customer` (`customer_id`, `username`) VALUES
 (15, 'rohan');  ";
 
 $rs= mysql_query($mynewSQL) or die(mysql_error());
+
+
+// crating Products data 
 $mynewSQL ="CREATE TABLE IF NOT EXISTS `products` (
   `p_id` int(11) NOT NULL AUTO_INCREMENT,
   `product_name` varchar(211) NOT NULL,
@@ -38,6 +46,9 @@ $mynewSQL ="CREATE TABLE IF NOT EXISTS `products` (
 
 
 $rs= mysql_query($mynewSQL) or die(mysql_error());
+
+
+// adding products 
 $mynewSQL ="INSERT INTO `products` (`p_id`, `product_name`, `product_price`, `product_image`, `comments`) VALUES
 (1, 'apple', 140, 'img/apple.jpg', 'price is for one apple'),
 (2, 'banana', 30, 'img/banana.jpg', 'price for dozones of banana'),
@@ -61,4 +72,29 @@ $mynewSQL ="INSERT INTO `products` (`p_id`, `product_name`, `product_price`, `pr
 ";
 
 $rs= mysql_query($mynewSQL) or die(mysql_error());
-echo 'Done';
+
+
+$mynewSQL ="CREATE TABLE IF NOT EXISTS `order` (
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
+  `customer_id` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `order_amount` int(11) NOT NULL,
+  PRIMARY KEY (`order_id`)
+) AUTO_INCREMENT=1000 ;";
+$rs= mysql_query($mynewSQL) or die(mysql_error());
+
+
+$mynewSQL ="
+DROP TABLE IF EXISTS `order_items`;
+CREATE TABLE IF NOT EXISTS `order_items` (
+  `entity_id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  PRIMARY KEY (`entity_id`)
+)  ;
+";
+
+$rs= mysql_query($mynewSQL) or die(mysql_error());
+
+header('location:index.php');
