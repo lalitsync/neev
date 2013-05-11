@@ -6,7 +6,7 @@ include 'info.php';
 
 if(isset($_REQUEST['refresh']))
 {
-$table_truncate =" TRUNCATE Table  customer";
+$table_truncate =" TRUNCATE Table  `customer`";
 mysql_query($table_truncate);
 
 
@@ -14,10 +14,10 @@ $table_truncate =" TRUNCATE Table  `order`";
 mysql_query($table_truncate);
 
 
-$table_truncate =" TRUNCATE Table  order_items";
+$table_truncate =" TRUNCATE Table  `order_items`";
 mysql_query($table_truncate);
 
-$table_truncate =" TRUNCATE Table  products";
+$table_truncate =" TRUNCATE Table  `products`";
 mysql_query($table_truncate);
 
 
