@@ -60,10 +60,25 @@ for(var i=0;i < ca.length;i++) {
 }
 
 
+function showSuccess()
+{
+		jQuery('div.message').html('<p class="success round-border"> Order SuccessFully Placed !</p>');  
+		jQuery('p.success').fadeOut(5000)
+		jQuery('.allProducts  .my-new-list li ').show();
+		jQuery('.selected   .selected-fruits li ').remove();
+		
+		/* Remove Ityems From Cookie*/
+		var date = new Date();
+		var cookie ='';
+			date.setTime(date.getTime()+(365*24*60*60*1000));
+			var expires = "; expires="+date.toGMTString();
+			document.cookie = 'selectedProducts='+cookie+'; expires='+date.toGMTString()+';path=/'
+		return false;
+}
+
 
 function SetHistory()
-{
-	    	var cookie = "";
+{	    	var cookie = "";
 			jQuery.each(jQuery('.selected li'), function(key, val) {
 					cookie = cookie +'|##|'+jQuery(this).attr('id')+':::'+jQuery(this).attr('class')+':::'+jQuery(this).val();
 				});
@@ -110,7 +125,8 @@ jQuery(document).ready(function() {
 						var CountSelected = jQuery('.allProducts li.active').length;
 						if(CountSelected <=0) { 
 									jQuery('div.message').html('<p class="error round-border"> Please Select Product To add!</p>');  
-									jQuery('p.error').fadeOut(5000);  
+									jQuery('p.error').fadeOut(5000);
+									// jQuery('p.error').remove();  
 									return false;
 								}
 								
@@ -139,7 +155,8 @@ jQuery('button.remove').live('click',function() {
 						var CountSelected = jQuery('.selected li.active').length;
 						if(CountSelected <=0) { 
 									jQuery('div.message').html('<p class="error round-border"> Please Select Product To Remove!</p>');  
-									jQuery('p.error').fadeOut(5000);  
+									jQuery('p.error').fadeOut(5000);
+									// jQuery('p.error').remove();
 									return false;
 								}
 									jQuery.each(jQuery('.selected li.active'), function(key, val) { 
@@ -166,7 +183,9 @@ jQuery('button.submit').live('click',function() {
 				});
 				
 				// alert(Items.length);
-				jQuery.post("addorder.php", {'user_id': jQuery('select#handle').val(), 'ordertotal':OrderTotal,'itemsdata': Items.join(':')} ,function(data) {   alert("Data Loaded: " + data);   });
+				jQuery.post("addorder.php", {'user_id': jQuery('select#handle').val(), 'ordertotal':OrderTotal,'itemsdata': Items.join(':')} ,function(data) {   
+							showSuccess();																																   
+					 });
 				
 				
 			});

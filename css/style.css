@@ -106,6 +106,7 @@ label.caption {
 	padding: 5px;
 	font-weight:bold;
 	margin:10px auto;
+	cursor:pointer;
 }
 .allProducts select {
 	display:none;
@@ -139,12 +140,23 @@ label.caption {
 	border-left:1px solid #fe7878;
 }
 p.error {
-	background:#FF9999;
-	color:#FF0000;
-	border:#FF0000 1px solid;
-	padding:5px;
+background: #FFD7D7 url('../img/error.jpg') no-repeat 10px 10px;
+color: #FF0000;
+border: ##DF8F8F 1px solid;
+padding: 10px 10px 10px 40px;
 	margin:0 10px;
 }
+
+p.success {
+	background: #ECFAE3 url('../img/success.jpg') no-repeat 10px 110px
+	color:#a8fe02;
+	border:##ACDBAD 1px solid;
+padding: 10px 10px 10px 40px;
+	margin:0 10px;
+}
+
+
+
 div.Form-holder fieldset .customerhandler_holder {
 width: 325px;
 background:#e0e0e0 url(../img/order-list-heading.png) no-repeat 290px -10px ;
