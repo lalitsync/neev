@@ -3,6 +3,28 @@ include 'info.php';
 
 // creating customers  table
 
+
+if(isset($_REQUEST['refresh']))
+{
+$table_truncate =" TRUNCATE Table  customer";
+mysql_query($table_truncate);
+
+
+$table_truncate =" TRUNCATE Table  `order`";
+mysql_query($table_truncate);
+
+
+$table_truncate =" TRUNCATE Table  order_items";
+mysql_query($table_truncate);
+
+$table_truncate =" TRUNCATE Table  products";
+mysql_query($table_truncate);
+
+
+}
+
+
+
 $mynewSQL ="
 CREATE TABLE IF NOT EXISTS `customer` (
   `customer_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -84,19 +106,21 @@ $mynewSQL ="CREATE TABLE IF NOT EXISTS `order` (
 ) ;";
 $rs= mysql_query($mynewSQL) or die(mysql_error());
 
-$mynewSQL ="INSERT INTO `order` (`order_id`, `customer_id`, `status`, `date`, `order_amount`) VALUES
+$mynewSQL ="
+INSERT INTO `order` (`order_id`, `customer_id`, `status`, `date`, `order_amount`) VALUES
 (1, 1, 1, '2013-05-11', 360),
 (2, 1, 1, '2013-04-11', 280),
 (3, 6, 1, '2013-05-09', 80),
 (4, 9, 1, '2013-05-11', 40),
-(5, 1, 1, '2013-04-11', 40),
+(5, 1, 1, '2013-05-11', 40),
 (6, 1, 1, '2013-05-11', 40),
-(7, 1, 1, '2013-05-09', 40),
-(8, 1, 1, '2013-05-09', 40),
-(9, 1, 1, '2013-05-09', 80),
+(7, 1, 1, '2013-05-11', 40),
+(8, 1, 1, '2013-05-11', 40),
+(9, 1, 1, '2013-05-11', 80),
 (10, 1, 1, '2013-05-11', 80),
 (11, 1, 1, '2013-05-11', 80),
-(12, 1, 1, '2013-05-12', 80);
+(12, 1, 1, '2013-05-12', 80),
+(13, 1, 1, '2013-05-12', 140);
 ";
 $rs= mysql_query($mynewSQL) or die(mysql_error());
 
@@ -141,8 +165,8 @@ $mynewSQL ="INSERT INTO `order_items` (`entity_id`, `order_id`, `item_id`) VALUE
 (21, 11, 4),
 (22, 11, 3),
 (23, 12, 4),
-(24, 12, 3);
-";
+(24, 12, 3),
+(25, 13, 1); ";
 $rs= mysql_query($mynewSQL) or die(mysql_error());
 
 header('location:index.php');

@@ -92,7 +92,7 @@ if($keyId ==0  || $orderRow['order_id'] !=$lastOrderId)
 	 $nextkeyId =$keyId+1;
 
 	 if($keyId == $rowsCount || $orderRow['order_id'] != $orderObject[$nextkeyId]['order_id'] ) {  
-	 $html.=' <li id="subtotal" class="odd"><div class="name">  Sub Total </div> <div class="price">  RS '.$subTotal.' </div></li>';  $subTotal =0;
+	 $html.=' <li id="subtotal" class="odd"><div class="name">  Sub Total </div> <div class="price">  RS '.$orderRow['order_amount'].' </div></li>';  $subTotal =0;
 	}
 
 	
