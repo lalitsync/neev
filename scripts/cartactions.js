@@ -174,7 +174,6 @@ jQuery('button.submit').live('click',function() {
 
 
 // admin dunctionality	  
-
 function getOrdersByDate(date)
 {
 jQuery.post("getorderbydate.php", {'date': date} ,function(data) {   
@@ -192,11 +191,40 @@ jQuery.post("getsnapshotbydate.php", {'date': date} ,function(data) {
  }
 
 
+function updateDropDown()
+{
+		jQuery.each(jQuery('select'), function(key, val) {
+						jQuery(this).prev('span').text(jQuery(this).find('option:selected').text());
+										
+				});
+				jQuery('.Order-Row .Order_items').hide();
+				jQuery('.Order-Row .Order_items .heading .status').addClass('close');
+								jQuery('.Order-Row .Order_items .heading .status').removeClass('open');
+
+}
+
 jQuery(document).ready(function() {
 								
-								getOrdersByDate(jQuery('#datehandle').val());
-jQuery('#datehandle').live('change',function() {
-													getOrdersByDate(jQuery(this).val());
+								jQuery('.status').live('click',function() {
+																		
+																		jQuery(this).toggleClass('open');
+																		jQuery(this).toggleClass('close');
+																		jQuery('.close').parent().parent().find('.Order_items').hide();
+
+																		jQuery('.open').parent().parent().find('.Order_items').show();
+																		
+																		});
+								
+								
+								updateDropDown();
+								getOrdersByDate(jQuery('#datehandler').val());
+													jQuery('#datehandler').live('change',function() {
+														getOrdersByDate(jQuery(this).val());
+															updateDropDown()
+													});
+													
+													jQuery('select#handle').live('change',function() {
+														updateDropDown()
 													});
 											  
 								});

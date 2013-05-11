@@ -12,8 +12,8 @@ include 'functions.php';
   <div class="notification"></div>
   <div class="message"></div>
   <div class="Form-holder">
-    <div class="placeholder">
-      <fieldset>
+    <div class="placeholder home">
+      <fieldset class="page-title">
       <ul>
         <li>
           <label class="label">Fruits Bazar</label>
@@ -27,10 +27,12 @@ include 'functions.php';
           <label class="caption">Select A Customer</label>
         </li>
          <li>
-          <label class="caption"><select id="handle" class=" round-border">
-          <?php   echo makeOptions(getAllUsers());  ?>
-          
-          </select></label>
+         <div class="customerhandler_holder  round-border">
+          <span class="selected-customer"> &nbsp; </span>
+          <select id="handle" class="round-border hiden">
+            <?php   echo makeOptions(getAllUsers());  ?>
+          </select>
+          </div>
         </li>
       </ul>
       </fieldset>

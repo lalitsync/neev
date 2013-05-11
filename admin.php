@@ -22,16 +22,17 @@ include 'functions.php';
       </ul>
       </fieldset>
       <fieldset class="dateholder">
-      <ul>
+      <ul class="date-admin">
         <li>
           <label class="caption">Select date</label>
-        </li>
-        <li>
-          <label class="caption">
-          <select id="datehandle" class="round-border">
+          </li>
+          <li>
+          <div class="datehandler_holder  round-border">
+          <span class="selected-date"> </span>
+          <select id="datehandler" class="round-border hiden">
             <?php   echo makeOptions(getAllDates());  ?>
           </select>
-          </label>
+          </div>
         </li>
       </ul>
       </fieldset>
